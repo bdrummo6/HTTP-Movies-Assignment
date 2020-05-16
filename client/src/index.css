@@ -177,7 +177,15 @@ h2 {
   flex-direction: column;
 }
 
-#star {
+#star1 {
+  margin-bottom: 15px;
+}
+
+#star2 {
+  margin-bottom: 15px;
+}
+
+#star3 {
   margin-bottom: 15px;
 }
 
