@@ -100,7 +100,7 @@ const UpdateMovie = ({ movies, history, updateMovies }) => {
 									value={star}
 									onChange={(e) => handleStars(e, index)}
 									className='form-input'
-									id='star'
+									id='star1'
 								/>
 							)
 						})}
