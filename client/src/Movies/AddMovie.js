@@ -8,7 +8,7 @@ const AddMovie = ({ updateMovies, history }) => {
         title: '', 
         director: '', 
         metascore: 0, 
-        stars: []
+        stars: ['', '', '']
     });
 
     const handleChange = e => {
@@ -16,34 +16,39 @@ const AddMovie = ({ updateMovies, history }) => {
 		setNewMovie({...newMovie, [e.target.name]: e.target.value});
     }
 
-    const handleStars = e => {
-        const newStars = newMovie.stars.map((star, index) => {
-        if (`${index}` === e.target.name) {
-            return e.target.value;
-        } else {
-            return star;
-        }   
-    })
-        console.log(newStars)
-        setNewMovie({ ...newMovie, stars: newStars });
-    }
+	const handleStars = e => {
+		const newStars = newMovie.stars.map((star, index) => {
+		  if (`${index}` === e.target.name) {
+			return e.target.value;
+		  } else {
+			return star;
+		  }   
+	
+		})
+	
+		console.log(newStars)
+	
+		setNewMovie({ ...newMovie, stars: newStars });
+	}
+	
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        axios.post(`http://localhost:5000/api/movies/`, newMovie)
-            .then(res => {
-                // console.log(res.data)
-                updateMovies(res.data)
-                setNewMovie({
-                    title: '', 
-                    director: '', 
-                    metascore: 0, 
-                    stars: []
-                });
-                history.push(`/`)
-            })
-            .catch(err => console.log(err))
-    }
+	const handleSubmit = e => {
+		e.preventDefault();
+		axios.post(`http://localhost:5000/api/movies/`, newMovie)
+		  .then(res => {
+			// console.log(res.data)
+			updateMovies(res.data)
+			setNewMovie({
+				title: '', 
+				director: '', 
+				metascore: 0, 
+				stars: ['', '', '']
+			});
+		
+			history.push(`/`)
+		  })
+		  .catch(err => console.log(err))
+		}
 
     return (
         <Container className="form-container">
@@ -90,31 +95,31 @@ const AddMovie = ({ updateMovies, history }) => {
 							<Label className='form-label'>Stars:</Label>
 							<div className='stars'>
 								<Input
-									 type="text"
-									 name="0"
-									 value={newMovie.stars[0]}
-									 onChange={handleStars}
-									 placeholder='ex. Sandra Bullock'
-									 className='form-input'
-									id='star'
+									type="text"
+									name="0"
+									value={newMovie.stars[0]}
+									onChange={handleStars}
+									placeholder='ex. Sandra Bullock'
+									className='form-input'
+									id='star1'
 								/>
 								<Input
-									 type="text"
-									 name="1"
-									 value={newMovie.stars[1]}
-									 onChange={handleStars}
-									 placeholder='ex. Tom Hanks'
-									 className='form-input'
-									id='star'
+									type="text"
+									name="1"
+									value={newMovie.stars[1]}
+									onChange={handleStars}
+									placeholder='ex. Tom Hanks'
+									className='form-input'
+									id='star2'
 								/>
 								<Input
-									 type="text"
-									 name="2"
-									 value={newMovie.stars[2]}
-									 onChange={handleStars}
-									 placeholder='ex. Matt Damon'
-									 className='form-input'
-									 id='star'
+									type="text"
+									name="2"
+									value={newMovie.stars[2]}
+									onChange={handleStars}
+									placeholder='ex. Matt Damon'
+									className='form-input'
+									id='star3'
 								/>
 							</div>
 						</FormGroup>
